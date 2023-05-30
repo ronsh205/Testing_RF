@@ -1,4 +1,4 @@
-#include "/home/ron/Documents/c++/caulclter_RF/Sensitvety.hpp"
+#include "/home/ron/Documents/c++/caulclter_RF/Testing_RF/Sensitvety.hpp"
 #include <bits/stdc++.h>
 
 double RF::Sensitvety(double noise_figure, double Signal_Power, double Bandwidth, double SNR_IN)

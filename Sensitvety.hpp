@@ -10,8 +10,9 @@ public:
     double Sensitvety(double noise_figure, double Signal_Power, double bandwidth, double SNR_IN);
 
     // setters & getters
-    double RF ::get_bandwidth() const { return bandwidth; };
+    double get_bandwidth() const { return bandwidth; };
     int set_bandwidth(double b);
+    
   
 
 };
