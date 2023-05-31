@@ -1,5 +1,7 @@
-#include "/home/ron/Documents/c++/caulclter_RF/Testing_RF/Sensitvety.hpp"
+#include "Sensitvety.hpp"
 #include <bits/stdc++.h>
+using namespace std;
+#include <iostream>
 
 double RF::Sensitvety(double noise_figure, double Signal_Power, double Bandwidth, double SNR_IN)
 {
@@ -7,33 +9,90 @@ double RF::Sensitvety(double noise_figure, double Signal_Power, double Bandwidth
     return sensitvety;
 }
 
-int RF ::set_bandwidth(double b)
+int RF ::set_bandwidth()
 {
+    double b;
+    cout << "enter Bandwidth at Hz " << endl;
+    cin >> b;
     // ERROR
-    if (b < numeric_limits<double>::max())
+    if (b > numeric_limits<double>::max())
+    {
+        std::cout << "The entered value bandwith is less than the maximum double value." << std::endl;
+        return 1;
+    }
+    else
+    {
+        bandwidth = b;
+        return 0;
+    }
+}
+int RF ::set_noise_figure()
+{
+    double noise;
+    cout << "enter noise dBm " << endl;
+    cin >> noise;
+    // ERROR
+    if (noise > numeric_limits<double>::max())
+    {
+        std::cout << "The entered value noise is less than the maximum double value." << std::endl;
+        return 1;
+    }
+    else
+    {
+        bandwidth = noise;
+        return 0;
+    }
+}
+int RF ::set_SNR_IN()
+{
+    double SNR_IN_user;
+    cout << "enter SNR in dB " << endl;
+    cin >> SNR_IN_user;
+    if (SNR_IN_user > numeric_limits<double>::max())
+    {
+        std::cout << "The entered value SNR in is less than the maximum double value." << std::endl;
+        return 1;
+    }
+    else
+    {
+        SNR_IN = SNR_IN_user;
+        return 0;
+    }
+}
+int RF ::set_SNR_OUT()
+{
+    double SNR_OUT_user;
+    cout << "enter SNR out at dB " << endl;
+    cin >> SNR_OUT_user;
+    if (SNR_OUT_user > numeric_limits<double>::max())
+    {
+        std::cout << "The entered value SNR out is less than the maximum double value." << std::endl;
+        return 1;
+    }
+    else
+    {
+        SNR_IN = SNR_OUT_user;
+        return 0;
+    }
+}
+int RF ::set_Power()
+{
+    double power;
+    cout << "enter power in dBm  " << endl;
+    cin >> power;
+    if (power > numeric_limits<double>::max())
     {
         std::cout << "The entered value is less than the maximum double value." << std::endl;
         return 1;
     }
-    bandwidth = b;
-    return 0;
+    else
+    {
+        SNR_IN = power;
+        return 0;
+    }
 }
 
-int main()
+int RF::test(double b)
 {
-    RF user_test;
-    double noise_figure, Signal_Power;
-    double Bandwidth, SNR_IN, SNR_OUT;
-    double user_sensitvety;
-    cout << "enter noise figure at dB " << endl;
-    cin >> noise_figure;
-    cout << "enter Signal_Power at dBm " << endl;
-    cin >> Signal_Power;
-    cout << "enter SNR_IN at dB " << endl;
-    cin >> SNR_IN;
-    cout << "enter Bandwidth at Hz " << endl;
-    cin >> Bandwidth;
-    user_sensitvety = user_test.Sensitvety(noise_figure, Signal_Power, Bandwidth, SNR_IN);
-    cout << "the sensitvety of systems is " << user_sensitvety << " dBm " << endl;
     return 0;
 }

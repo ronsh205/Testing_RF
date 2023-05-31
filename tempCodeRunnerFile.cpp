@@ -1,0 +1,2 @@
+
+    cin >> Signal_Power;
