@@ -4,10 +4,11 @@ using namespace std;
 #include <iostream>
 #include <cmath>
 const double Boltzmann_Constant = 1.380649e-23;
+const double celzios = 273.15;
 
 double RF::Sensitvety(double noise_figure, double Signal_Power, double Bandwidth, double SNR_IN)
 {
-    sensitvety = Signal_Power + noise_figure + (10 * log10(Bandwidth)) + SNR_IN;
+    sensitvety = (-1) * Signal_Power + noise_figure + (10 * log10(Bandwidth)) + SNR_IN;
     return sensitvety;
 }
 
@@ -41,7 +42,7 @@ int RF ::set_noise_figure()
     }
     else
     {
-        bandwidth = noise;
+        noise_figure = noise;
         return 0;
     }
 }
@@ -89,7 +90,7 @@ int RF ::set_Power()
     }
     else
     {
-        SNR_IN = power;
+        Signal_Power = power;
         return 0;
     }
 }
@@ -97,4 +98,21 @@ int RF ::set_Power()
 int RF::test(double b)
 {
     return 0;
+}
+int RF::noise_floor_caluc(double bandwidth)
+{
+    double temp;
+    cout << "enter tempater cilzios " << endl;
+    cin >> temp;
+    if (temp > numeric_limits<double>::max())
+    {
+        std::cout << "The entered value is less than the maximum double value." << std::endl;
+        return 1;
+    }
+    else
+    {
+        power_floor = bandwidth * Boltzmann_Constant * (temp + celzios);
+        cout << "power floor is " << power_floor <<" from method" <<endl;
+        return 0;
+    }
 }
