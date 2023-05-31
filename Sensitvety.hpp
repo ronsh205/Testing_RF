@@ -21,7 +21,5 @@ public:
     double get_snr_out() const { return SNR_OUT;};
     int set_Power();
     double get_power() const{return Signal_Power;};
-    
-  
 
 };

@@ -2,6 +2,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 #include <iostream>
+#include <cmath>
+const double Boltzmann_Constant = 1.380649e-23;
 
 double RF::Sensitvety(double noise_figure, double Signal_Power, double Bandwidth, double SNR_IN)
 {

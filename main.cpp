@@ -8,5 +8,6 @@ int main()
     user_test.set_SNR_IN();
     user_test.Sensitvety(user_test.get_noise_figure(), user_test.get_power(),user_test.get_bandwidth(),user_test.get_snr_in());
     cout << "the sensitvety of systems is " << user_test.get_sensitvety() << " dBm " << endl;
+    cout << "Boltzmann constant vaule is " << Boltzmann_Constant<< endl;
     return 0;
 }
