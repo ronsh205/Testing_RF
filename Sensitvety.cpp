@@ -29,7 +29,7 @@ int RF ::set_bandwidth()
 int RF ::set_noise_figure()
 {
     double noise;
-    cout << "enter noise dBm " << endl;
+    cout << "enter noise dB " << endl;
     cin >> noise;
     // ERROR
     if (noise > numeric_limits<double>::max())
