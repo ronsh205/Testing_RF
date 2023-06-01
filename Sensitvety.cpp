@@ -99,7 +99,7 @@ int RF::test(double b)
 {
     return 0;
 }
-int RF::noise_floor_caluc(double bandwidth,double temp)
+int RF::noise_floor_caluc(double bandwidth, double temp)
 {
 
     if (temp > numeric_limits<double>::max())
@@ -109,7 +109,7 @@ int RF::noise_floor_caluc(double bandwidth,double temp)
     }
     else
     {
-        power_floor = bandwidth * Boltzmann_Constant * (temp + celzios);
+        power_floor = 10*log10(bandwidth * Boltzmann_Constant * temp);
         cout << "power floor is " << power_floor << " from method" << endl;
         return 0;
     }
@@ -119,6 +119,15 @@ int RF::set_temperature()
     double temp;
     cout << "enter tempater cilzios " << endl;
     cin >> temp;
-    temperature = temp;
-
+    if (temp > numeric_limits<double>::max())
+    {
+        cout << "The entered value temperature is less than the maximum double value." << endl;
+        return 1;
+    }
+    else
+    {
+        temp = temp + celzios;
+        temperature = temp;
+        return 0;
+    }
 }
