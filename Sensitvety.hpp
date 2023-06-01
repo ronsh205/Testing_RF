@@ -5,7 +5,7 @@ class RF
 private:
     double noise_figure, Signal_Power,power_floor;
     double bandwidth, SNR_IN, SNR_OUT;
-    double sensitvety;
+    double sensitvety,temperature;
 
 
 public:
@@ -23,6 +23,9 @@ public:
     double get_snr_out() const { return SNR_OUT; };
     int set_Power();
     double get_power() const { return Signal_Power; };
-    int noise_floor_caluc(double bandwidth);
+    int set_temperature();
+    int  get_temperature()const{return temperature;};
+    int noise_floor_caluc(double bandwidth,double temp);
     double get_noise_floor() const{return power_floor;};
+
 };

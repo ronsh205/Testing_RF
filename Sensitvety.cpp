@@ -8,7 +8,7 @@ const double celzios = 273.15;
 
 double RF::Sensitvety(double noise_figure, double Signal_Power, double Bandwidth, double SNR_IN)
 {
-    sensitvety = (-1) * Signal_Power + noise_figure + (10 * log10(Bandwidth)) + SNR_IN;
+    sensitvety = Signal_Power - noise_figure - (10 * log10(Bandwidth)) - SNR_IN;
     return sensitvety;
 }
 
@@ -74,7 +74,7 @@ int RF ::set_SNR_OUT()
     }
     else
     {
-        SNR_IN = SNR_OUT_user;
+        SNR_OUT = SNR_OUT_user;
         return 0;
     }
 }
@@ -99,11 +99,9 @@ int RF::test(double b)
 {
     return 0;
 }
-int RF::noise_floor_caluc(double bandwidth)
+int RF::noise_floor_caluc(double bandwidth,double temp)
 {
-    double temp;
-    cout << "enter tempater cilzios " << endl;
-    cin >> temp;
+
     if (temp > numeric_limits<double>::max())
     {
         std::cout << "The entered value is less than the maximum double value." << std::endl;
@@ -112,7 +110,15 @@ int RF::noise_floor_caluc(double bandwidth)
     else
     {
         power_floor = bandwidth * Boltzmann_Constant * (temp + celzios);
-        cout << "power floor is " << power_floor <<" from method" <<endl;
+        cout << "power floor is " << power_floor << " from method" << endl;
         return 0;
     }
+}
+int RF::set_temperature()
+{
+    double temp;
+    cout << "enter tempater cilzios " << endl;
+    cin >> temp;
+    temperature = temp;
+
 }
